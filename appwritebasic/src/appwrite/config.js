@@ -59,7 +59,7 @@ export class Service{
             return await this.databases.deleteDocument(
              conf.appwriteDatabaseId,
              conf.appwriteCollectionId,
-             slug 
+             slug
             )
             return true
         } catch (error) {
@@ -95,6 +95,39 @@ export class Service{
 
 
     //file upload service
+
+    async uploadFile (file){
+        try {
+            return await this.bucket.createFile(
+                conf.appwriteBucketId,
+                ID.unique(),
+                file
+            )
+        } catch (error) {
+            console.log("Appwrite service :: uploadFile :: error", error);
+            return false
+        }
+    }
+
+    async deleteFile(fileid){
+        try {
+            return await this.bucket.deleteFile(
+                conf.appwriteBucketId,
+                fileid
+            )
+            return true
+        } catch (error) {
+            console.log("Appwrite service :: deleteFile :: error", error);
+            return false
+        }
+    }
+
+    getFilePreview(fileid){
+        return   this.bucket.getFilePreview(
+            conf.appwriteBucketId,
+            fileid
+        )
+    }
 }
 
 
