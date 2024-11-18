@@ -12,19 +12,19 @@ export class AuthService {
         .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
     }
-    async createAccount({email, password, name}){
-        try{
-            await this.client.account.create(ID.unique(), email,password,name);
-            if(userAccount){
-                return this.login((email, password));
-            }else {
-                return userAccount;
-            }
-
-        }catch (error){
-            throw error;
+    async createAccount({ email, password, name }) {
+        try {
+          const userAccount = await this.account.create(ID.unique(), email, password, name);
+          if (userAccount) {
+            return this.login({ email, password });
+          } else {
+            return userAccount;
+          }
+        } catch (error) {
+          throw error;
         }
-    }
+      }
+      
 
     async login({email, password}) {
         try{
