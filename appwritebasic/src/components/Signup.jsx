@@ -65,7 +65,7 @@
                             }
                         })}
                         />
-                        <Input
+                        <input
                         label="Password: "
                         type="password"
                         placeholder="Enter your password"
