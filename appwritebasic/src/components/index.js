@@ -7,7 +7,7 @@ import Button from "./Button";
 import RTE from "./RTE";
 import Signup from "./Signup";
 import Login from "./Login";
-import PostForm from '../components/postForm/postForm'
+import PostForm from './postForm/postForm'
 import PostCard from "./PostCard";
 import AuthLayout from "./AuthLayout";
 import Input from '../components/Input';
